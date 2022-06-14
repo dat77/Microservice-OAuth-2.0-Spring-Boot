@@ -1,0 +1,75 @@
+[
+  {
+    "name": "Robert Plant",
+    "skills": "java, kotlin, node",
+    "startDate": "2019-05-08",
+    "level": "Middle",
+    "projectRole": "Developer",
+    "projectTeamId": "DEV220201KR"
+  },
+  {
+    "name": "Jimmy Page",
+    "skills": "java, python, kotlin",
+    "startDate": "2018-02-28",
+    "level": "Senior",
+    "projectRole": "Developer",
+    "projectTeamId": "DEV220201KR"
+  },
+  {
+    "name": "John Bonham",
+    "skills": "java, ETL/ELT, AWS Cloud, SW Patterns",
+    "startDate": "2017-12-15",
+    "level": "Senior",
+    "projectRole": "Architect",
+    "projectTeamId": "DEV220201KR"
+  },
+  {
+    "name": "John Paul Jones",
+    "skills": "Unix, Docker, Kubernetes",
+    "startDate": "2019-11-25",
+    "level": "Middle",
+    "projectRole": "DevOps",
+    "projectTeamId": "DEV220201KR"
+  },
+  {
+    "name": "Captain Ahab",
+    "skills": "java, kotlin",
+    "startDate": "2016-03-07",
+    "level": "Senior",
+    "projectRole": "Project manager",
+    "projectTeamId": "DEV220205KY"
+  },
+  {
+    "name": "Ishmael",
+    "skills": "java, python, kotlin",
+    "startDate": "2018-02-28",
+    "level": "Middle",
+    "projectRole": "Developer",
+    "projectTeamId": "DEV220205KY"
+  },
+  {
+    "name": "Starbuck",
+    "skills": "ETL/ELT, AWS Cloud, SW Patterns",
+    "startDate": "2015-12-01",
+    "level": "Senior",
+    "projectRole": "Architect",
+    "projectTeamId": "DEV220205KY"
+  },
+  {
+    "name": "Queequeg",
+    "skills": "Unix, Docker, Kubernetes",
+    "startDate": "2017-11-23",
+    "level": "Middle",
+    "projectRole": "DevOps",
+    "projectTeamId": "DEV220205KY"
+  },
+  {
+    "name": "Beth Hart",
+    "skills": "Unix, Docker, Kubernetes",
+    "startDate": "2017-11-23",
+    "level": "Junior",
+    "projectRole": "DevOps",
+    "projectTeamId": "DEV000101KR"
+  }
+
+]

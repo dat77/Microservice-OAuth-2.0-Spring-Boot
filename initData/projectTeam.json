@@ -1,0 +1,22 @@
+[
+  {
+    "code": "DEV220101KR",
+    "projectName": "insuranceCH",
+    "description": "CRM System for InsGlob Corp."
+  },
+  {
+    "code": "DEV220201KR",
+    "projectName": "AgroSearcher",
+    "description": "GIS for Tomato LTD"
+  },
+  {
+    "code": "DEV220205KY",
+    "projectName": "Aviadrom",
+    "description": "ERP System for AEGEAN"
+  },
+  {
+    "code": "DEV220210KR",
+    "projectName": "fINHelper",
+    "description": "quote analyzer for UBS"
+  }
+]
