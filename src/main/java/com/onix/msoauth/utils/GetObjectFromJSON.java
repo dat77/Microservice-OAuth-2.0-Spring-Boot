@@ -7,6 +7,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.onix.msoauth.entities.Level;
 import com.onix.msoauth.entities.ProjectRole;
+import com.onix.msoauth.entities.ProjectStatus;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -49,7 +50,7 @@ public class GetObjectFromJSON {
     }
 
     public static class GetProjectTeam{
-        private String code, projectName, description;
+        private String code, projectName, description, status;
         public static List<GetProjectTeam> readFromFile(String fileName) throws IOException{
             return new ObjectMapper().setVisibility(FIELD, ANY)
                     .readValue(new FileInputStream(fileName), new TypeReference<List<GetProjectTeam>>() {});
@@ -66,6 +67,8 @@ public class GetObjectFromJSON {
         public String getDescription() {
             return description;
         }
+
+        public ProjectStatus getProjectStatus() { return ProjectStatus.valueOf(status);}
     }
 
 }

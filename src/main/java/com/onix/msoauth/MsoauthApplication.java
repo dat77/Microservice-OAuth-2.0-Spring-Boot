@@ -4,6 +4,7 @@ import com.onix.msoauth.services.PersonService;
 import com.onix.msoauth.services.ProjectTeamService;
 import com.onix.msoauth.utils.GetObjectFromJSON;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,6 +14,13 @@ import java.io.IOException;
 
 @SpringBootApplication
 public class MsoauthApplication implements CommandLineRunner {
+
+	@Value("${msoauth.personsfile}")
+	private String personsFile;
+
+	@Value("${msoauth.teamsfile}")
+	private String teamsFile;
+
 	@Autowired
 	private PersonService personService;
 	@Autowired
@@ -31,19 +39,16 @@ public class MsoauthApplication implements CommandLineRunner {
 	}
 
 	private void loadTestDataAtStartup() throws IOException {
-		projectTeamService.create("DEV000101KR", "bench", "Await/Trainee");
-//		projectTeamService.create("DEV220101KR", "insuranceCH", "CRM System for InsGlob Corp.");
-//		projectTeamService.create("DEV220201KR", "AgroSearcher", "GIS for Tomato LTD");
-//		projectTeamService.create("DEV220205KY", "Aviadrom", "ERP System for AEGEAN");
-//		projectTeamService.create("DEV220210KR", "fINHelper", "quote analyzer for UBS");
-		GetObjectFromJSON.GetProjectTeam.readFromFile("initData/projectTeam.json")
+		//projectTeamService.create("DEV000101KR", "bench", "Await/Trainee");
+		GetObjectFromJSON.GetProjectTeam.readFromFile(teamsFile)
 				.forEach(team -> projectTeamService.create(
 						team.getCode(),
 						team.getProjectName(),
-						team.getDescription()
+						team.getDescription(),
+						team.getProjectStatus()
 				));
 		System.out.println("Project Teams loaded: " +projectTeamService.count());
-		GetObjectFromJSON.GetPerson.readFromFile("initData/persons.json")
+		GetObjectFromJSON.GetPerson.readFromFile(personsFile)
 				.forEach(person -> personService.create(
 						person.getName(),
 						person.getSkills(),
@@ -52,7 +57,7 @@ public class MsoauthApplication implements CommandLineRunner {
 						person.getProjectRole(),
 						person.getProjectTeam()
 				));
-		System.out.println("Persons loaded:" + personService.count());
+		System.out.println("Persons loaded: " + personService.count());
 
 	}
 

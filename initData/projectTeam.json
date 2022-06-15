@@ -1,22 +1,32 @@
 [
   {
+    "code": "DEV000101KR",
+    "projectName": "bench",
+    "description": "Await/Trainee",
+    "status": "acquisition"
+  },
+  {
     "code": "DEV220101KR",
     "projectName": "insuranceCH",
-    "description": "CRM System for InsGlob Corp."
+    "description": "CRM System for InsGlob Corp.",
+    "status": "acquisition"
   },
   {
     "code": "DEV220201KR",
     "projectName": "AgroSearcher",
-    "description": "GIS for Tomato LTD"
+    "description": "GIS for Tomato LTD",
+    "status": "inProgress"
   },
   {
     "code": "DEV220205KY",
     "projectName": "Aviadrom",
-    "description": "ERP System for AEGEAN"
+    "description": "ERP System for AEGEAN",
+    "status": "inProgress"
   },
   {
     "code": "DEV220210KR",
     "projectName": "fINHelper",
-    "description": "quote analyzer for UBS"
+    "description": "quote analyzer for UBS",
+    "status": "inProgress"
   }
 ]

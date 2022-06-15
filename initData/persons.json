@@ -64,6 +64,14 @@
     "projectTeamId": "DEV220205KY"
   },
   {
+    "name": "Linda Schierse Leonard",
+    "skills": "java, kotlin",
+    "startDate": "2020-04-28",
+    "level": "Senior",
+    "projectRole": "Developer",
+    "projectTeamId": "DEV220210KR"
+  },
+  {
     "name": "Beth Hart",
     "skills": "Unix, Docker, Kubernetes",
     "startDate": "2017-11-23",
