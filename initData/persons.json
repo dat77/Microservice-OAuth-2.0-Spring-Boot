@@ -25,7 +25,7 @@
   },
   {
     "name": "John Paul Jones",
-    "skills": "Unix, Docker, Kubernetes",
+    "skills": "Unix, Docker, Kubernetes, java",
     "startDate": "2019-11-25",
     "level": "Middle",
     "projectRole": "DevOps",
@@ -49,7 +49,7 @@
   },
   {
     "name": "Starbuck",
-    "skills": "ETL/ELT, AWS Cloud, SW Patterns",
+    "skills": "ETL/ELT, AWS Cloud, SW Patterns, java",
     "startDate": "2015-12-01",
     "level": "Senior",
     "projectRole": "Architect",
@@ -57,7 +57,7 @@
   },
   {
     "name": "Queequeg",
-    "skills": "Unix, Docker, Kubernetes",
+    "skills": "Unix, Docker, Kubernetes, java",
     "startDate": "2017-11-23",
     "level": "Middle",
     "projectRole": "DevOps",
@@ -73,7 +73,7 @@
   },
   {
     "name": "Beth Hart",
-    "skills": "Unix, Docker, Kubernetes",
+    "skills": "Unix, Docker, Kubernetes, java",
     "startDate": "2017-11-23",
     "level": "Junior",
     "projectRole": "DevOps",
