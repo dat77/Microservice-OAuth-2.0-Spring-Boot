@@ -16,7 +16,7 @@ public interface ProjectTeamRepository extends CrudRepository<ProjectTeam, Strin
     Collection<ProjectTeam> findByStatus(ProjectStatus status);
     @Query("select t from ProjectTeam t where t.code like %?1% ")
     List<ProjectTeam> findByCodeLike(String code);
-    List<ProjectTeam> findByCodeContaining(String code);
+    List<ProjectTeam> findByCodeContaining(String code); // the same as above
 
 
     @Override

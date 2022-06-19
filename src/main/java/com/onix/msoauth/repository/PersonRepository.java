@@ -11,11 +11,14 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 
 import java.util.List;
+import java.util.Optional;
 
 @RepositoryRestResource(collectionResourceRel = "employees", path = "employees")
 public interface PersonRepository extends PagingAndSortingRepository<Person, Integer> {
     Page<Person> findBySkillsContaining(String skills, Pageable pageable);
     List<Person> findByLevelAndSkillsContaining(Level level, String skills);
+
+    Optional<Person> findByName(String name);
 
     @Override
     @RestResource(exported = true)
