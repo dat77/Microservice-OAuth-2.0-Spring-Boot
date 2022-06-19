@@ -66,5 +66,5 @@ public class PersonalAccomplishmentService {
 
         return personalAccomplishmentRepository.getTimeCostsByProject(code);
     }
-    
+
 }
