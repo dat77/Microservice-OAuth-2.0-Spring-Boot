@@ -1,6 +1,7 @@
 package com.onix.msoauth;
 
 import com.onix.msoauth.services.PersonService;
+import com.onix.msoauth.services.PersonalAccomplishmentService;
 import com.onix.msoauth.services.ProjectTeamService;
 import com.onix.msoauth.utils.GetObjectFromJSON;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +21,16 @@ public class MsoauthApplication implements CommandLineRunner {
 
 	@Value("${msoauth.teamsfile}")
 	private String teamsFile;
+	@Value("${msoauth.accomplishmentfile}")
+	private String accomplishmentfile;
+
 
 	@Autowired
 	private PersonService personService;
 	@Autowired
 	private ProjectTeamService projectTeamService;
+	@Autowired
+	private PersonalAccomplishmentService personalAccomplishmentService;
 
 
 	public static void main(String[] args) {
@@ -58,6 +64,15 @@ public class MsoauthApplication implements CommandLineRunner {
 						person.getProjectTeam()
 				));
 		System.out.println("Persons loaded: " + personService.count());
+		GetObjectFromJSON.GetAccomplishment.readFromFile(accomplishmentfile)
+				.forEach(accomplishment -> personalAccomplishmentService.create(
+						accomplishment.getName(),
+						accomplishment.getCode(),
+						accomplishment.getTimeCosts(),
+						accomplishment.getDescription()
+				));
+		System.out.println("Accomplishments loaded: " + personalAccomplishmentService.count());
+
 
 	}
 

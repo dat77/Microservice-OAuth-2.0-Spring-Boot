@@ -71,4 +71,28 @@ public class GetObjectFromJSON {
         public ProjectStatus getProjectStatus() { return ProjectStatus.valueOf(status);}
     }
 
+    public static class GetAccomplishment{
+        private String timeCosts, description, code, name;
+        public static List<GetAccomplishment> readFromFile(String fileName) throws IOException{
+            return new ObjectMapper().setVisibility(FIELD, ANY)
+                    .readValue(new FileInputStream(fileName), new TypeReference<List<GetAccomplishment>>() {});
+        }
+
+        public Integer getTimeCosts() {
+            return Integer.valueOf(timeCosts);
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public String getCode() {
+            return code;
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
+
 }

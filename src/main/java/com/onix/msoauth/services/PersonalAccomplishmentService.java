@@ -69,7 +69,7 @@ public class PersonalAccomplishmentService {
         return personalAccomplishmentRepository.findByPkPersonId(id);
     }
 
-    public PersonalAccomplishment getPersonalInfo(Integer personId, String projectCode)  throws NoSuchElementException{
+    public PersonalAccomplishment getPersonalInfoByProject(Integer personId, String projectCode)  throws NoSuchElementException{
         Person person = personRepository.findById(personId)
                 .orElseThrow(() -> new NoSuchElementException("Person does not exist: " + personId));
 
@@ -93,6 +93,10 @@ public class PersonalAccomplishmentService {
                 .orElseThrow(() -> new NoSuchElementException("Person does not exist: " + id));
 
         return personalAccomplishmentRepository.getTimeCostsByPerson(id);
+    }
+
+    public Long count(){
+        return personalAccomplishmentRepository.count();
     }
 
 }

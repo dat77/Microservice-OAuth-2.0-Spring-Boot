@@ -55,6 +55,14 @@ public class PersonalAccomplishmentController {
                 .map(AccomplishmentDto::new).collect(Collectors.toList());
     }
 
+    @GetMapping(value = {"/employees/{id}/accomplishments/{code}",
+                         "/teams/{code}/accomplishments/{id}"})
+    @ResponseStatus(HttpStatus.OK)
+    public AccomplishmentDto getByPersonIdAndProjectCode(@PathVariable(value = "id") Integer id,
+                                                         @PathVariable(value = "code") String code){
+        return new AccomplishmentDto(personalAccomplishmentService.getPersonalInfoByProject(id,code));
+    }
+
     @GetMapping("/teams/{code}/accomplishments/sum")
     @ResponseStatus(HttpStatus.OK)
     public Long getCostByCode(@PathVariable(value = "code") String code){

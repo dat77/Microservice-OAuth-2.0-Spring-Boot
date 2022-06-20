@@ -21,7 +21,7 @@ public interface PersonalAccomplishmentRepository extends CrudRepository<Persona
     List<PersonalAccomplishment> findByPkPersonId(Integer id);
 
     @Query("select pa from PersonalAccomplishment pa " +
-            "where pa.personalProjectPk.projectTeam.code = ?1" +
+            "where pa.personalProjectPk.projectTeam.code = ?1 " +
             "and pa.personalProjectPk.person.id = ?2")
     Optional<PersonalAccomplishment> findByPkProjectTeamCodeAndPersonId(String code, Integer id);
 

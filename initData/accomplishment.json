@@ -1,0 +1,68 @@
+[
+  {
+    "timeCosts": 1500,
+    "description": "Architecture creation, DB schema",
+    "code": "DEV220101KR",
+    "name": "Robert Plant"
+  },
+  {
+    "timeCosts": 600,
+    "description": "Architecture creation",
+    "code": "DEV220201KR",
+    "name": "Robert Plant"
+  },
+  {
+    "timeCosts":"1500",
+    "description":"Development",
+    "code":"DEV220101KR",
+    "name":"Jimmy Page"
+  },
+  {
+    "timeCosts":"3000",
+    "description":"Development",
+    "code":"DEV220201KR",
+    "name":"Jimmy Page"
+  },
+  {
+    "timeCosts":"150",
+    "description":"SW Architecture",
+    "code":"DEV220201KR",
+    "name":"John Bonham"
+  },
+  {
+    "timeCosts":"300",
+    "description":"SW Architecture",
+    "code":"DEV220101KR",
+    "name":"John Bonham"
+  },
+  {
+    "timeCosts":"3500",
+    "description":"Development",
+    "code":"DEV220205KY",
+    "name":"Linda Schierse Leonard"
+  },
+  {
+    "timeCosts":"550",
+    "description":"Development",
+    "code":"DEV220101KR",
+    "name":"Linda Schierse Leonard"
+  },
+  {
+    "timeCosts":"500",
+    "description":"DevOps",
+    "code":"DEV220205KY",
+    "name":"Beth Hart"
+  },
+  {
+    "timeCosts":"470",
+    "description":"DevOps",
+    "code":"DEV220210KR",
+    "name":"Beth Hart"
+  },
+  {
+    "timeCosts":"1450",
+    "description":"DevOps",
+    "code":"DEV220101KR",
+    "name":"Beth Hart"
+  }
+]
