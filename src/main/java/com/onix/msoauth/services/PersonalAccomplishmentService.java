@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -29,12 +30,25 @@ public class PersonalAccomplishmentService {
 
 
     public PersonalAccomplishment create(String personName, String projectCode,
-                                         Integer timeCosts, String description){
+                                         Integer timeCosts, String description) throws NoSuchElementException{
         Person person = personRepository.findByName(personName)
-                .orElseThrow(() -> new RuntimeException("Person does not exist: " + personName));
+                .orElseThrow(() -> new NoSuchElementException("Service exeption: Person does not exist: " + personName));
 
         ProjectTeam projectTeam = projectTeamRepository.findById(projectCode)
-                .orElseThrow(() -> new RuntimeException("Project Team does not exist: " + projectCode));
+                .orElseThrow(() -> new NoSuchElementException("Service exeption: Project Team does not exist: " + projectCode));
+
+        return personalAccomplishmentRepository.save(new PersonalAccomplishment(
+                new PersonalProjectPk(projectTeam, person),
+                timeCosts, description));
+    }
+
+    public PersonalAccomplishment create(Integer personId, String projectCode,
+                                         Integer timeCosts, String description) throws NoSuchElementException{
+        Person person = personRepository.findById(personId)
+                .orElseThrow(() -> new NoSuchElementException("Service exeption: Person does not exist: " + personId));
+
+        ProjectTeam projectTeam = projectTeamRepository.findById(projectCode)
+                .orElseThrow(() -> new NoSuchElementException("Service exeption: Project Team does not exist: " + projectCode));
 
         return personalAccomplishmentRepository.save(new PersonalAccomplishment(
                 new PersonalProjectPk(projectTeam, person),
