@@ -1,6 +1,7 @@
 package com.onix.msoauth.controllers;
 
 import com.onix.msoauth.entities.AccomplishmentDto;
+import com.onix.msoauth.entities.PersonalAccomplishment;
 import com.onix.msoauth.services.PersonalAccomplishmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,6 +41,27 @@ public class PersonalAccomplishmentController {
 
         personalAccomplishmentService.create(id, dto.getCode(),
                                              dto.getTimeCosts(), dto.getDescription());
+    }
+
+    @PutMapping("/employees/{id}/accomplishments")
+    public AccomplishmentDto putByPerson(@PathVariable(value = "id") Integer id,
+                                         @RequestBody AccomplishmentDto dto){
+       return new AccomplishmentDto(personalAccomplishmentService.update(id, dto.getCode(),
+                                                                  dto.getTimeCosts(), dto.getDescription()));
+    }
+
+    @PatchMapping("/employees/{id}/accomplishments")
+    public AccomplishmentDto patchByPerson(@PathVariable(value = "id") Integer id,
+                                         @RequestBody AccomplishmentDto dto){
+       return new AccomplishmentDto(personalAccomplishmentService.patch(id, dto.getCode(),
+                                                                  dto.getTimeCosts(), dto.getDescription()));
+    }
+
+    @DeleteMapping(value = {"/employees/{id}/accomplishments/{code}",
+                            "/teams/{code}/accomplishments/{id}"})
+    public void deleteByPersonIdAndProjectCode(@PathVariable(value = "id") Integer id,
+                                                            @PathVariable(value = "code") String code){
+        personalAccomplishmentService.delete(id,code);
     }
 
     @GetMapping("/teams/{code}/accomplishments")

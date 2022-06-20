@@ -53,6 +53,28 @@ public class PersonalAccomplishmentService {
                 timeCosts, description));
     }
 
+    public PersonalAccomplishment update(Integer personId, String projectCode,
+                                         Integer timeCosts, String description) throws NoSuchElementException{
+        PersonalAccomplishment personalAccomplishment = getPersonalInfoByProject(personId,projectCode);
+        personalAccomplishment.setTimeCosts(timeCosts);
+        personalAccomplishment.setDescription(description);
+        return personalAccomplishmentRepository.save(personalAccomplishment);
+    }
+
+    public PersonalAccomplishment patch(Integer personId, String projectCode,
+                                         Integer timeCosts, String description) throws NoSuchElementException{
+        PersonalAccomplishment personalAccomplishment = getPersonalInfoByProject(personId,projectCode);
+        if (timeCosts != null && timeCosts != 0) personalAccomplishment.setTimeCosts(timeCosts);
+        if (description != null) personalAccomplishment.setDescription(description);
+        return personalAccomplishmentRepository.save(personalAccomplishment);
+    }
+
+    public void delete(Integer personId, String projectCode)
+            throws NoSuchElementException{
+        PersonalAccomplishment personalAccomplishment = getPersonalInfoByProject(personId,projectCode);
+        personalAccomplishmentRepository.delete(personalAccomplishment);
+    }
+
     public List<PersonalAccomplishment> getProjectInfo(String code)  throws NoSuchElementException{
         ProjectTeam projectTeam = projectTeamRepository.findById(code)
                 .orElseThrow(() -> new NoSuchElementException("Project Team does not exist: " + code));
@@ -67,7 +89,8 @@ public class PersonalAccomplishmentService {
         return personalAccomplishmentRepository.findByPkPersonId(id);
     }
 
-    public PersonalAccomplishment getPersonalInfoByProject(Integer personId, String projectCode)  throws NoSuchElementException{
+    public PersonalAccomplishment getPersonalInfoByProject(Integer personId, String projectCode)
+            throws NoSuchElementException{
         Person person = personRepository.findById(personId)
                 .orElseThrow(() -> new NoSuchElementException("Person does not exist: " + personId));
 
