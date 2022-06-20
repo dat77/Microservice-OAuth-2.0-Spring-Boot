@@ -17,6 +17,10 @@ public interface PersonalAccomplishmentRepository extends CrudRepository<Persona
     List<PersonalAccomplishment> findByPkProjectTeamCode(String code);
 
     @Query("select pa from PersonalAccomplishment pa " +
+            "where pa.personalProjectPk.person.id = ?1")
+    List<PersonalAccomplishment> findByPkPersonId(Integer id);
+
+    @Query("select pa from PersonalAccomplishment pa " +
             "where pa.personalProjectPk.projectTeam.code = ?1" +
             "and pa.personalProjectPk.person.id = ?2")
     Optional<PersonalAccomplishment> findByPkProjectTeamCodeAndPersonId(String code, Integer id);
@@ -25,5 +29,11 @@ public interface PersonalAccomplishmentRepository extends CrudRepository<Persona
            "from PersonalAccomplishment pa " +
            "where pa.personalProjectPk.projectTeam.code = ?1")
     Long getTimeCostsByProject(String code);
+
+    @Query("select sum(pa.timeCosts) " +
+            "from PersonalAccomplishment pa " +
+            "where pa.personalProjectPk.person.id = ?1")
+    Long getTimeCostsByPerson(Integer id);
+
 
 }

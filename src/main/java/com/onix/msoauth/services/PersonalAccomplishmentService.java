@@ -55,30 +55,44 @@ public class PersonalAccomplishmentService {
                 timeCosts, description));
     }
 
-    List<PersonalAccomplishment> getProjectInfo(String code){
+    public List<PersonalAccomplishment> getProjectInfo(String code)  throws NoSuchElementException{
         ProjectTeam projectTeam = projectTeamRepository.findById(code)
-                .orElseThrow(() -> new RuntimeException("Project Team does not exist: " + code));
+                .orElseThrow(() -> new NoSuchElementException("Project Team does not exist: " + code));
 
         return personalAccomplishmentRepository.findByPkProjectTeamCode(code);
     }
 
-    PersonalAccomplishment getPersonalInfo(String personName, String projectCode){
-        Person person = personRepository.findByName(personName)
-                .orElseThrow(() -> new RuntimeException("Person does not exist: " + personName));
+    public List<PersonalAccomplishment> getPersonalInfo(Integer id)  throws NoSuchElementException{
+        Person person = personRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Person does not exist: " + id));
+
+        return personalAccomplishmentRepository.findByPkPersonId(id);
+    }
+
+    public PersonalAccomplishment getPersonalInfo(Integer personId, String projectCode)  throws NoSuchElementException{
+        Person person = personRepository.findById(personId)
+                .orElseThrow(() -> new NoSuchElementException("Person does not exist: " + personId));
 
         ProjectTeam projectTeam = projectTeamRepository.findById(projectCode)
-                .orElseThrow(() -> new RuntimeException("Project Team does not exist: " + projectCode));
+                .orElseThrow(() -> new NoSuchElementException("Project Team does not exist: " + projectCode));
 
         return personalAccomplishmentRepository.findByPkProjectTeamCodeAndPersonId(projectCode, person.getId())
-                .orElseThrow(() -> new RuntimeException("There are no accomplishments by: " + personName +" in "+ projectCode));
+                .orElseThrow(() -> new NoSuchElementException("There are no accomplishments by: " + personId +" in "+ projectCode));
 
     }
 
-    Long getProjectTimeCost(String code){
+    public Long getProjectTimeCost(String code)  throws NoSuchElementException{
         ProjectTeam projectTeam = projectTeamRepository.findById(code)
-                .orElseThrow(() -> new RuntimeException("Project Team does not exist: " + code));
+                .orElseThrow(() -> new NoSuchElementException("Project Team does not exist: " + code));
 
         return personalAccomplishmentRepository.getTimeCostsByProject(code);
+    }
+
+    public Long getProjectTimeCost(Integer id)  throws NoSuchElementException{
+        Person person = personRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Person does not exist: " + id));
+
+        return personalAccomplishmentRepository.getTimeCostsByPerson(id);
     }
 
 }

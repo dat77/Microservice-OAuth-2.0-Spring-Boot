@@ -13,6 +13,14 @@ public class AccomplishmentDto {
         this.name = name;
     }
 
+    public AccomplishmentDto(PersonalAccomplishment personalAccomplishment){
+        this.timeCosts = personalAccomplishment.getTimeCosts();
+        this.description = personalAccomplishment.getDescription();
+        this.code = personalAccomplishment.getPersonalProjectPk().getProjectTeam().getCode();
+        this.name = personalAccomplishment.getPersonalProjectPk().getPerson().getName();
+
+    }
+
     public AccomplishmentDto() {
     }
 
