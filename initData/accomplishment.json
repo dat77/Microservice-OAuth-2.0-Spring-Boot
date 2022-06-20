@@ -12,6 +12,12 @@
     "name": "Robert Plant"
   },
   {
+    "timeCosts": 1600,
+    "description": "non-productive",
+    "code": "DEV000101KR",
+    "name": "Robert Plant"
+  },
+  {
     "timeCosts":"1500",
     "description":"Development",
     "code":"DEV220101KR",
@@ -21,6 +27,12 @@
     "timeCosts":"3000",
     "description":"Development",
     "code":"DEV220201KR",
+    "name":"Jimmy Page"
+  },
+  {
+    "timeCosts":"5000",
+    "description":"non-productive",
+    "code":"DEV000101KR",
     "name":"Jimmy Page"
   },
   {
@@ -36,6 +48,12 @@
     "name":"John Bonham"
   },
   {
+    "timeCosts":"1300",
+    "description":"non-productive",
+    "code":"DEV000101KR",
+    "name":"John Bonham"
+  },
+  {
     "timeCosts":"3500",
     "description":"Development",
     "code":"DEV220205KY",
@@ -45,6 +63,12 @@
     "timeCosts":"550",
     "description":"Development",
     "code":"DEV220101KR",
+    "name":"Linda Schierse Leonard"
+  },
+  {
+    "timeCosts":"1550",
+    "description":"internal projects",
+    "code":"DEV000101KR",
     "name":"Linda Schierse Leonard"
   },
   {
@@ -63,6 +87,12 @@
     "timeCosts":"1450",
     "description":"DevOps",
     "code":"DEV220101KR",
+    "name":"Beth Hart"
+  },
+  {
+    "timeCosts":"2250",
+    "description":"internal DevOps",
+    "code":"DEV000101KR",
     "name":"Beth Hart"
   }
 ]

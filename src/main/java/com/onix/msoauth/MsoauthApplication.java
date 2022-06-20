@@ -73,7 +73,6 @@ public class MsoauthApplication implements CommandLineRunner {
 				));
 		System.out.println("Accomplishments loaded: " + personalAccomplishmentService.count());
 
-
 	}
 
 

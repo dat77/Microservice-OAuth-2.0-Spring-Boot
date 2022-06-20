@@ -10,9 +10,7 @@ import com.onix.msoauth.repository.ProjectTeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class PersonalAccomplishmentService {
@@ -93,6 +91,14 @@ public class PersonalAccomplishmentService {
                 .orElseThrow(() -> new NoSuchElementException("Person does not exist: " + id));
 
         return personalAccomplishmentRepository.getTimeCostsByPerson(id);
+    }
+
+    public Map<String, Long> getProductiveCosts(Integer id) throws NoSuchElementException{
+        Map<String, Long> res = new HashMap<String, Long>();
+        res.put( "productive costs", personalAccomplishmentRepository.findByPkPersonId(id).stream()
+                .filter(ac -> !ac.getPersonalProjectPk().getProjectTeam().getCode().equals("DEV000101KR"))
+                .mapToLong(PersonalAccomplishment::getTimeCosts).sum());
+        return res;
     }
 
     public Long count(){

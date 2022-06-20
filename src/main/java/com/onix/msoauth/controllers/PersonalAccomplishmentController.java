@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
@@ -75,6 +76,12 @@ public class PersonalAccomplishmentController {
 //        Long l1 = personalAccomplishmentService.getPersonalInfo(id).stream()
 //                .mapToLong(pa -> pa.getTimeCosts()).sum();
         return (personalAccomplishmentService.getProjectTimeCost(id));
+    }
+
+    @GetMapping("/employees/{id}/accomplishments/productive")
+    @ResponseStatus(HttpStatus.OK)
+    public Map<String, Long> getProductiveCostByPersonId(@PathVariable(value = "id") Integer id){
+        return (personalAccomplishmentService.getProductiveCosts(id));
     }
 
 
