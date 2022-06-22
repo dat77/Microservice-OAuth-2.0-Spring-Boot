@@ -1,0 +1,500 @@
+{
+	"info": {
+		"_postman_id": "5da44399-abc3-4548-83c3-23c5384de938",
+		"name": "msoauth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Employees",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Employee by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/employees/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Employee`s Team",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/employees/1/projectTeam",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"1",
+						"projectTeam"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Employee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Sting\",\r\n    \"skills\": \"java, kotlin, node\",\r\n    \"startDate\": \"2019-08-12\",\r\n    \"level\": \"Middle\",\r\n    \"projectRole\": \"Dev\",\r\n    \"projectTeamId\": \"DEV220201KR\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Employee patch",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"skills\": \"java, kotlin, node, jquery\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/employees/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Employee change",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Sting IV\",\r\n    \"skills\": \"java, node\",\r\n    \"startDate\": \"2019-08-12\",\r\n    \"level\": \"Senior\",\r\n    \"projectRole\": \"Dev\",\r\n    \"projectTeamId\": \"DEV220201KR\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/employees/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Employee pagination",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/employees?page=1&size=3&sort=name,asc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "3"
+						},
+						{
+							"key": "sort",
+							"value": "name,asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Project Teams",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/teams",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"teams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Project Teams change",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"code\": \"DEV000101KY\",\r\n    \"projectName\": \"bench\",\r\n    \"description\": \"internal dev\",\r\n    \"status\": \"acquisition\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/teams/DEV000101KY",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"teams",
+						"DEV000101KY"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Project Teams New",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"code\": \"DEV000111KY\",\r\n    \"projectName\": \"bench\",\r\n    \"description\": \"internal dev\",\r\n    \"status\": \"acquisition\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/teams/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"teams",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Project Teams patch",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"code\": \"DEV000101KY\",\r\n    \"projectName\": \"bench extra\",\r\n    \"description\": \"internal dev\",\r\n    \"status\": \"acquisition\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/teams/DEV000101KY",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"teams",
+						"DEV000101KY"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "accomplishments by project",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/teams/DEV220101KR/accomplishments/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"teams",
+						"DEV220101KR",
+						"accomplishments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create accomplishment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"timeCosts\":\"1750\",\r\n    \"description\":\"Architecture creation, DB schema\",\r\n    \"code\":\"DEV220101KR\",\r\n    \"name\":\"Robert Plant\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/teams/DEV220101KR/accomplishments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"teams",
+						"DEV220101KR",
+						"accomplishments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "total accomplishment by project",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"timeCosts\":\"1750\",\r\n    \"description\":\"Architecture creation, DB schema\",\r\n    \"code\":\"DEV220101KR\",\r\n    \"name\":\"Robert Plant\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/teams/DEV220101KR/accomplishments/sum",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"teams",
+						"DEV220101KR",
+						"accomplishments",
+						"sum"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "accomplishments by person",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/employees/1/accomplishments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"1",
+						"accomplishments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "accomplishments by person in project",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/employees/1/accomplishments/DEV220101KR",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"1",
+						"accomplishments",
+						"DEV220101KR"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patch accomplishments by person in project",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"timeCosts\": 1800,\r\n        \"description\": \"non-productive\",\r\n        \"code\": \"DEV000101KR\",\r\n        \"name\": \"Robert Plant\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/employees/1/accomplishments/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"1",
+						"accomplishments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "productive accomplishments by person",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"timeCosts\": 1800,\r\n        \"description\": \"non-productive\",\r\n        \"code\": \"DEV000101KR\",\r\n        \"name\": \"Robert Plant\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/employees/1/accomplishments/productive",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"1",
+						"accomplishments",
+						"productive"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

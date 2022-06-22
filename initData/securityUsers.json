@@ -1,0 +1,23 @@
+[
+  {
+    "username":"rob",
+    "password":"$2a$12$ZhGS.zcWt1gnZ9xRNp7inOvo5hIT0ngN7N.pN939cShxKvaQYHnnu",
+    "firstName":"Robert",
+    "lastName":"Plant",
+    "roles": "ROLE_ADMIN"
+  },
+  {
+    "username":"jim",
+    "password":"$2a$12$ZhGS.zcWt1gnZ9xRNp7inOvo5hIT0ngN7N.pN939cShxKvaQYHnnu",
+    "firstName":"Jimmy",
+    "lastName":"Page",
+    "roles": "ROLE_ADMIN ROLE_USER"
+  },
+  {
+    "username":"jo",
+    "password":"$2a$12$ZhGS.zcWt1gnZ9xRNp7inOvo5hIT0ngN7N.pN939cShxKvaQYHnnu",
+    "firstName":"John",
+    "lastName":"Bonham",
+    "roles": "ROLE_USER"
+  }
+]

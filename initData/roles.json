@@ -1,0 +1,10 @@
+[
+  {
+    "roleName":"ROLE_ADMIN",
+    "description":"Administrator"
+  },
+  {
+    "roleName":"ROLE_USER",
+    "description":"Look up accomplishments"
+  }
+]

@@ -1,8 +1,6 @@
 package com.onix.msoauth;
 
-import com.onix.msoauth.services.PersonService;
-import com.onix.msoauth.services.PersonalAccomplishmentService;
-import com.onix.msoauth.services.ProjectTeamService;
+import com.onix.msoauth.services.*;
 import com.onix.msoauth.utils.GetObjectFromJSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,11 +16,15 @@ public class MsoauthApplication implements CommandLineRunner {
 
 	@Value("${msoauth.personsfile}")
 	private String personsFile;
-
 	@Value("${msoauth.teamsfile}")
 	private String teamsFile;
 	@Value("${msoauth.accomplishmentfile}")
 	private String accomplishmentfile;
+	@Value("${msoauth.securityuserfile}")
+	private String securityuserfile;
+	@Value("${msoauth.rolefile}")
+	private String rolefile;
+
 
 
 	@Autowired
@@ -31,6 +33,10 @@ public class MsoauthApplication implements CommandLineRunner {
 	private ProjectTeamService projectTeamService;
 	@Autowired
 	private PersonalAccomplishmentService personalAccomplishmentService;
+	@Autowired
+	private RoleService roleService;
+	@Autowired
+	private SecurityUserService securityUserService;
 
 
 	public static void main(String[] args) {
@@ -72,6 +78,21 @@ public class MsoauthApplication implements CommandLineRunner {
 						accomplishment.getDescription()
 				));
 		System.out.println("Accomplishments loaded: " + personalAccomplishmentService.count());
+		GetObjectFromJSON.GetRole.readFromFile(rolefile)
+				.forEach(role -> roleService.create(
+						role.getRoleName(),
+						role.getDescription()
+				));
+		System.out.println("Roles loaded: " + roleService.count());
+		GetObjectFromJSON.GetSecurityUser.readFromFile(securityuserfile)
+				.forEach(user -> securityUserService.create(
+						user.getUsername(),
+						user.getPassword(),
+						user.getFirstName(),
+						user.getLastName(),
+						user.getRoles()
+				));
+		System.out.println("Security users loaded: " + securityUserService.count());
 
 	}
 
