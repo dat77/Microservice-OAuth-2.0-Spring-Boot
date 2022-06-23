@@ -24,11 +24,18 @@ public class WebSecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
 
         httpSecurity
-                .authorizeRequests()
-                .antMatchers("/employees/**").permitAll()
-                .antMatchers("/teams/**").permitAll()
-                .antMatchers("/users/signin").permitAll()
-                .anyRequest().authenticated();
+//                .authorizeRequests()
+//                .antMatchers("/employees/**").permitAll()
+//                .antMatchers("/teams/**").permitAll()
+//                .antMatchers("/users/signin").permitAll()
+//                .anyRequest().authenticated();
+                .authorizeRequests( authReq ->
+                        authReq                 // it's a new approach with lambda DSL
+                            .antMatchers("/employees/**").hasRole("ADMIN")
+                            .antMatchers("/teams/**").hasAnyRole("ADMIN", "USER")
+                            .antMatchers("/users/signin").permitAll()
+                            .anyRequest().authenticated())
+                .httpBasic();  // Basic authentication
 
         // Disable CSRF (cross site request forgery)
         httpSecurity.csrf().disable();
