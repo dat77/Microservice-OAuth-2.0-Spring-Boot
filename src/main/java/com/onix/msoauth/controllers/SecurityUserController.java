@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/users")
+//@RequestMapping(path = "/users")
 public class SecurityUserController {
     @Autowired
     private SecurityUserService securityUserService;
 
-    @PostMapping("/signin")
+    @PostMapping("/users/signin")
     public Authentication signin(@RequestBody LoginDto loginDto){
         return securityUserService.signin(loginDto.getUsername(), loginDto.getPassword()) ;
     }
