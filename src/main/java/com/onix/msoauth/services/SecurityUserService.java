@@ -11,6 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -47,6 +48,16 @@ public class SecurityUserService {
 
     public Authentication signin(String username, String password) {
         return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+    }
+
+    public Optional<SecurityUser> signup(String username, String password, String firstName, String lastName){
+        if (!securityUserRepository.findByUsername(username).isPresent()){
+            return Optional.of(securityUserRepository.save(new SecurityUser(
+                    username,passwordEncoder.encode(password),firstName,lastName,
+                    Arrays.asList(roleRepository.findByRoleName("ROLE_USER").get())
+            )));
+        }
+        return Optional.empty();
     }
 
 
