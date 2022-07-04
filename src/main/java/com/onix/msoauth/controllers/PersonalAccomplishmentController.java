@@ -5,6 +5,7 @@ import com.onix.msoauth.entities.PersonalAccomplishment;
 import com.onix.msoauth.services.PersonalAccomplishmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,6 +28,7 @@ public class PersonalAccomplishmentController {
 
     @PostMapping("/teams/{code}/accomplishments")
     @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasRole('ROLE_USER')")
     public void createByCode(@PathVariable(value = "code") String code,
                              @RequestBody AccomplishmentDto dto){
 
@@ -36,6 +38,8 @@ public class PersonalAccomplishmentController {
 
     @PostMapping("/employees/{id}/accomplishments")
     @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    //@PostAuthorize("#username == authentication.principal.username")
     public void createByPerson(@PathVariable(value = "id") Integer id,
                                @RequestBody AccomplishmentDto dto){
 
@@ -44,6 +48,7 @@ public class PersonalAccomplishmentController {
     }
 
     @PutMapping("/employees/{id}/accomplishments")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public AccomplishmentDto putByPerson(@PathVariable(value = "id") Integer id,
                                          @RequestBody AccomplishmentDto dto){
        return new AccomplishmentDto(personalAccomplishmentService.update(id, dto.getCode(),
@@ -51,6 +56,7 @@ public class PersonalAccomplishmentController {
     }
 
     @PatchMapping("/employees/{id}/accomplishments")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public AccomplishmentDto patchByPerson(@PathVariable(value = "id") Integer id,
                                          @RequestBody AccomplishmentDto dto){
        return new AccomplishmentDto(personalAccomplishmentService.patch(id, dto.getCode(),
@@ -59,6 +65,7 @@ public class PersonalAccomplishmentController {
 
     @DeleteMapping(value = {"/employees/{id}/accomplishments/{code}",
                             "/teams/{code}/accomplishments/{id}"})
+    @PreAuthorize("hasRole('ROLE_USER')")
     public void deleteByPersonIdAndProjectCode(@PathVariable(value = "id") Integer id,
                                                             @PathVariable(value = "code") String code){
         personalAccomplishmentService.delete(id,code);
