@@ -1,6 +1,7 @@
 package com.onix.msoauth.configuration;
 
 import com.onix.msoauth.repository.RoleRepository;
+import com.onix.msoauth.services.SecurityUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +13,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -19,6 +21,9 @@ public class WebSecurityConfiguration {
 
     @Autowired
     private RoleRepository roleRepository;
+
+    @Autowired
+    private SecurityUserDetailsService securityUserDetailsService;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
@@ -31,11 +36,12 @@ public class WebSecurityConfiguration {
 //                .anyRequest().authenticated();
                 .authorizeRequests( authReq ->
                         authReq                 // it's a new approach with lambda DSL
-                            .antMatchers("/employees/**").hasRole("ADMIN")
-                            .antMatchers("/teams/**").hasAnyRole("ADMIN", "USER")
+                            .antMatchers("/employees/**").permitAll() //to restrict the permission could be f.e. hasRole("ADMIN")
+                            .antMatchers("/teams/**").permitAll() //to restrict the permission could be f.e. hasAnyRole("ADMIN", "USER")
                             .antMatchers("/users/signin").permitAll()
                             .anyRequest().authenticated())
-                .httpBasic();  // Basic authentication
+                .addFilterBefore(new JwtTokenFilter(securityUserDetailsService),
+                                 UsernamePasswordAuthenticationFilter.class);  // Basic authentication
 
         // Disable CSRF (cross site request forgery)
         httpSecurity.csrf().disable();
